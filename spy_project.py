@@ -79,6 +79,7 @@ while choice==True:
             continue
         else:
             exit()
+            print"fgdfgdf"
 
 
 

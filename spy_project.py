@@ -64,29 +64,10 @@ while choice==True:
         if len(user_name)<1:
             print "Name is invalid Try something else"
             #print "Welcome %s %s." % (spy_details[user_name]['salutation'], user_name)
-        """status_menu = int(raw_input(
-            "1.Add a status update \n2.Add a friend \n3.send a secret message \n4.Read a secret message \n5.Read chats rom user \n6. Close application"))
-        if status_menu == 1:
-            spy_status(user_name)
-        elif status_menu == 2:
-            spy_friend(user_name)
-        elif status_menu == 3:
-            spy_encoded()
-        elif status_menu == 4:
-            spy_messsage()
-        elif status_menu == 5:
-            spy_history()
-        else:
-            print "Invalid input"
-    else:
-        if len(user_name)==0:
-            print "Error something wrong happen"
-            exit()
         else:
             input_salutation=raw_input("Enter the salutation")
             age=int(raw_input("enter the age of spy"))
-            if 12<age<50:
-                status = raw_input("Enter the status of user")
+            if 12>=age<=50:
                 ratings = float(raw_input("enter the ratings"))
                 if ratings == 1:
                     print "Not good!"
@@ -108,7 +89,19 @@ while choice==True:
             continue
         else:
             exit()
-
+    status_menu = int(raw_input("1.Add a status update \n2.Add a friend \n3.send a secret message \n4.Read a secret message \n5.Read chats rom user \n6. Close application"))
+    if status_menu == 1:
+        add_a_status(user_name)
+    elif status_menu == 2:
+        spy_friend(user_name)
+    elif status_menu == 3:
+        spy_encoded()
+    elif status_menu == 4:
+        spy_messsage()
+    elif status_menu == 5:
+        spy_history()
+    else:
+        print "Invalid input
 
 
 

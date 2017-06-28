@@ -1,6 +1,7 @@
-spy_list=['Aarav','22','4.5']
-spy_details={'Gauri':{'age':20,'rating':5,'status':'','friend':[],'salutation':[]}}
-status_history={'online','offline','busy','Available'}
+spy_detail={}
+spy_status_history={}
+status=["Available","sleeping"],"Busy","online"]
+special_words=["sos","save_me","help_me"]
 def spy_friend(user_name):
     f_name=raw_input("Enter the friend name: ")
     if len(f_name)!=0:
@@ -16,7 +17,7 @@ def spy_friend(user_name):
 
 def spy_status(user_name):
     print spy_details[user_name]['status']
-    status_choice=int(raw_input("1.Upadte  status \n2.Add new status"))
+    status_choice=int(raw_input("1.Update  status \n2.Add new status"))
     if status_choice==1:
         print spy_details[user_name]['status']
         status1=raw_input("update your status:")
@@ -27,15 +28,43 @@ def spy_status(user_name):
         spy_details[user_name].update({status2:status})
         print "new status added successfully!"
     else:
-        print "Innvalid choice!"
+        print "Invalid choice!"
+
+def select_a_friend(user_name): #method to select a friend and return position
+    leng=len(spy_detail[user_name]["friends"])
+    if leng==0:
+        print "You have no friends added. \n"
+        return("null")
+    else:
+        print "You have following people in your friend list: \n"
+        for i in range(0,leng):
+            print str(i+1)+". "+str(spy_detail[spy_name]["friends"].keys()[i])
+        position=int(raw_input("Enter the number corresponding to your choice of friend with whom you want to continue: "))
+        position=position-1
+        if (position<0 or position>=leng):
+            print "You have entered a wrong input\nTry again.\n"
+            return("null")
+        else:
+            return(position)
+
 
 choice=True
 while choice==True:
-    user_name=raw_input("Enter your name:")
-    if user_name in spy_details:
-
-        print "Welcome %s %s." % (spy_details[user_name]['salutation'], user_name)
-        status_menu = int(raw_input(
+    user_choice=int(raw_input("Do you want to continue using \n1.Default user \n2.Create a new spy_useruser"))
+    if user_choice==1:
+        import spy_details
+        user_name=spy_details.default_spy_details.keys()[0]
+        if user_name in spy_details.keys():
+            print "Default user exist in spy_dictionary"
+        else:
+            spy_details.update(spy_details.default_spy_detail)
+            spy_status_history.update({user_name: []})
+    elif user_choice==2:
+        user_name=raw_input("Enter the user")
+        if len(user_name)<1:
+            print "Name is invalid Try something else"
+            #print "Welcome %s %s." % (spy_details[user_name]['salutation'], user_name)
+        """status_menu = int(raw_input(
             "1.Add a status update \n2.Add a friend \n3.send a secret message \n4.Read a secret message \n5.Read chats rom user \n6. Close application"))
         if status_menu == 1:
             spy_status(user_name)
@@ -79,7 +108,7 @@ while choice==True:
             continue
         else:
             exit()
-            print"fgdfgdf"
+
 
 
 

@@ -2,6 +2,8 @@ spy_detail={}
 spy_status_history={}
 status=["Available","sleeping"],"Busy","online"]
 special_words=["sos","save_me","help_me"]
+count=0
+
 def spy_friend(user_name):
     f_name=raw_input("Enter the friend name: ")
     if len(f_name)!=0:
@@ -30,7 +32,7 @@ def spy_status(user_name):
     else:
         print "Invalid choice!"
 
-def select_a_friend(user_name): #method to select a friend and return position
+def select_a_friend(user_name):
     leng=len(spy_detail[user_name]["friends"])
     if leng==0:
         print "You have no friends added. \n"
@@ -38,7 +40,7 @@ def select_a_friend(user_name): #method to select a friend and return position
     else:
         print "You have following people in your friend list: \n"
         for i in range(0,leng):
-            print str(i+1)+". "+str(spy_detail[spy_name]["friends"].keys()[i])
+            print str(i+1)+". "+str(spy_detail[user_name]["friends"].keys()[i])
         position=int(raw_input("Enter the number corresponding to your choice of friend with whom you want to continue: "))
         position=position-1
         if (position<0 or position>=leng):
@@ -91,17 +93,20 @@ while choice==True:
             exit()
     status_menu = int(raw_input("1.Add a status update \n2.Add a friend \n3.send a secret message \n4.Read a secret message \n5.Read chats rom user \n6. Close application"))
     if status_menu == 1:
-        add_a_status(user_name)
+        spy_status(user_name)
     elif status_menu == 2:
-        spy_friend(user_name)
+        friennds_count=spy_friend(user_name)
+        print  "Your %i friends as" %(friends_count)
     elif status_menu == 3:
-        spy_encoded()
+        select_a_friend()
     elif status_menu == 4:
-        spy_messsage()
+        read_messsage(user_name)
     elif status_menu == 5:
-        spy_history()
+        chat_read(user_name)
+    elif status_menu==6:
+          exit()
     else:
-        print "Invalid input
+        print "Invalid input"
 
 
 
